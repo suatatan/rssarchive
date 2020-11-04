@@ -39,8 +39,7 @@ class RssArchive:
             CONFIG_EASY_DEBUG = {CONFIG_EASY_DEBUG}
             CONFIG_TEST_VAR = {CONFIG_TEST_VAR}
             CONFIG_TEST_MODE = {CONFIG_TEST_MODE}
-            CONFIG_FULL_TEXT_MODE = {CONFIG_FULL_TEXT_MODE}
-        """)
+            CONFIG_FULL_TEXT_MODE = {CONFIG_FULL_TEXT_MODE}""")
 
     def testfun(self):
         return CONFIG_TEST_VAR

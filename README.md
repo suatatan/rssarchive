@@ -7,7 +7,7 @@ rssarchive
 To install `rssarchive` just use with pip:
 
 ```bash
-pip install -i https://test.pypi.org/simple/ rssarchive
+pip install rssarchive
 ```
 
 To use `rssarchive` you can use over console or calling as library:
