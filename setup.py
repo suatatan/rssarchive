@@ -14,6 +14,7 @@ setup(name='rssarchive',
       license='MIT',
       packages=['rssarchive'],
       test_suite='nose.collector',
+      scripts=['bin/rssarchive'],
       tests_require=['nose'],
       install_requires = ['newspaper3k','feedparser'],
       zip_safe=False)
