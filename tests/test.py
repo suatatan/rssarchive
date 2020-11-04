@@ -7,7 +7,7 @@ import string
 import random
 #import rssarchive as ra
 import importlib.machinery # to import files as module
-ora = importlib.machinery.SourceFileLoader('rssarchive','/home/suat/Belgeler/github/turnusol_prod/turnusol/factomat/scripts/rssarchive/rssarchive/__init__.py').load_module()
+ora = importlib.machinery.SourceFileLoader('rssarchive','./rssarchive/rssarchive/__init__.py').load_module()
 
 ra = ora.RssArchive(CONFIG_TEST_VAR= "suat",
                     CONFIG_EASY_DEBUG = False,

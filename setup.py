@@ -15,5 +15,5 @@ setup(name='rssarchive',
       packages=['rssarchive'],
       test_suite='nose.collector',
       tests_require=['nose'],
-      install_requires = ['newspaper','feedparser'],
+      install_requires = ['newspaper3k','feedparser'],
       zip_safe=False)

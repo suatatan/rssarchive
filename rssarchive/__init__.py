@@ -9,8 +9,6 @@ import timeit
 
 class RssArchive:
 
-
-
     def __init__(self,
             CONFIG_DEFAULT_TABLE_NAME = 'tab_headline',
             CONFIG_SQLITEDB_URL = "/home/suat/rssarchive.sqlite",
@@ -162,7 +160,7 @@ class RssArchive:
         table_name = self.CONFIG_DEFAULT_TABLE_NAME if table_name == None else table_name
         try:
             # for first run
-            #_private_generate_table_if_dont_exists()
+            self._private_generate_table_if_dont_exists()
             is_source_does_not_exists_before = not(self.check_whether_headline_exist_in_archive(source))
             if is_source_does_not_exists_before:
                 #item does not exists
