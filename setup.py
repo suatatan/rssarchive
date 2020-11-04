@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='rssarchive',
-      version='0.1',
+      version='0.2',
       keywords = 'RSS,SQlite, News',
       description='Archive your RSS into SQLite',
       url='',
