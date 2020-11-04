@@ -7,7 +7,7 @@ import string
 import random
 #import rssarchive as ra
 import importlib.machinery # to import files as module
-ora = importlib.machinery.SourceFileLoader('rssarchive','./rssarchive/rssarchive/__init__.py').load_module()
+ora = importlib.machinery.SourceFileLoader('rssarchive','rssarchive/__init__.py').load_module()
 
 ra = ora.RssArchive(CONFIG_TEST_VAR= "suat",
                     CONFIG_EASY_DEBUG = False,
@@ -23,6 +23,9 @@ def get_random_string(length):
     return(result_str)
 
 class TestRssArchive(unittest.TestCase):
+
+    def test_create_rss_list_if_doest_not_exist(self):
+        self.assertEqual(ra.create_rss_list_if_doest_not_exist(), True, "Result should be True")
 
     def test_scrape_full_text_from_url(self):
         result = ra.scrape_full_text_from_url("https://www.sqlitetutorial.net/sqlite-between/")

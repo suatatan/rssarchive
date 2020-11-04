@@ -6,13 +6,17 @@ import sqlite3
 import string
 import time
 import timeit
+import pathlib
+import os
+import textwrap
+import inspect
 
 class RssArchive:
 
     def __init__(self,
             CONFIG_DEFAULT_TABLE_NAME = 'tab_headline',
-            CONFIG_SQLITEDB_URL = "/home/suat/rssarchive.sqlite",
-            CONFIG_RSS_LIST = "/home/suat/rss_list.csv",
+            CONFIG_SQLITEDB_URL = "rssarchive.sqlite",
+            CONFIG_RSS_LIST = "rss_list.csv",
             CONFIG_SINGLE_RSS_SOURCE_URL = "https://www.sabah.com.tr/rss/anasayfa.xml",
             CONFIG_EASY_DEBUG = True,
             CONFIG_TEST_VAR = "suatatan",
@@ -68,6 +72,44 @@ class RssArchive:
             self.easydebug("Error: Officio  "+str(ex))
             return 0
 
+    def create_rss_list_if_doest_not_exist(self,rss_list = "rss_list.csv"):
+        try:
+            DEFAULT_RSS_LIST = textwrap.dedent("""
+                        name,url
+                        Hürriyet,https://www.hurriyet.com.tr/rss/anasayfa
+                        Sabah,https://www.sabah.com.tr/rss/anasayfa.xml
+                        Star,http://www.star.com.tr/rss/rss.asp
+                        Takvim,https://www.takvim.com.tr/rss/anasayfa.xml
+                        Türkiye,http://www.turkiyegazetesi.com.tr/rss/rss.xml
+                        YeniÇağ,https://www.yenicaggazetesi.com.tr/rss
+                        YeniŞafak,https://www.yenisafak.com/Rss
+                        CNNTürk,https://www.cnnturk.com/feed/rss/news
+                        HaberTürk,http://www.haberturk.com/rss
+                        NTV,https://www.ntv.com.tr/gundem.rss
+                        GazeteDuvar,http://www.gazeteduvar.com.tr/feed
+                        Birgün,https://www.birgun.net/feed
+                        Milliyet,https://www.milliyet.com.tr/rss/rssnew/gundemrss.xml
+                        Cumhuriyet,http://www.cumhuriyet.com.tr/rss/son_dakika.xml
+                        Sözcü,https://www.sozcu.com.tr/feed/
+                        """)
+            DEFAULT_RSS_LIST = "".join([s for s in DEFAULT_RSS_LIST.strip().splitlines(True) if s.strip()])
+            path = ""
+            file = rss_list
+            p = pathlib.Path(file)
+            if p.is_file():
+                self.easydebug("RSS list file already exists")
+                pass
+            else:
+                # Creating a file at specified location
+                with open(os.path.join(path, file), 'w') as fp:
+                    fp.write(DEFAULT_RSS_LIST)
+                    fp.close()
+                    self.easydebug("RSS file does not exist, it was created")
+            return True
+        except Exception as ex:
+            self.easydebug("Error: Zio Zia:"+ str(ex))
+            return False
+
     def batch_save_rss(self,rss_list = None):
         """Takes rss_list and processes each source and saves it into sqlite.
         Parameters
@@ -75,10 +117,11 @@ class RssArchive:
         rss_list : list
             The file path of two column rss sources list. First column is name of source second column is URL of rss.
         """
-        rss_list = self.CONFIG_RSS_LIST if rss_list == None else rss_list
-        allrss = pd.read_csv(rss_list) if self.CONFIG_TEST_MODE != True else pd.read_csv(rss_list).sample(2)
-
         try:
+            rss_list = self.CONFIG_RSS_LIST if rss_list == None else rss_list
+            self.create_rss_list_if_doest_not_exist(rss_list)
+            # If there is no rss_list file it will be created and filled with test rss souces
+            allrss = pd.read_csv(rss_list) if self.CONFIG_TEST_MODE != True else pd.read_csv(rss_list).sample(2)
             start = timeit.default_timer()
             for index,row in allrss.iterrows():
                 #row = allrss.iloc[0,]
