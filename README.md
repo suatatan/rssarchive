@@ -46,15 +46,22 @@ newra  = ra.RssArchive(CONFIG_TEST_MODE=True,CONFIG_FULL_TEXT_MODE = False)
 construction. Here all parameters are defined:
 
 CONFIG_DEFAULT_TABLE_NAME = 'tab_headline'
+
 CONFIG_SQLITEDB_URL = "rssarchive.sqlite",
+
 CONFIG_RSS_LIST = "rss_list.csv",
+
 CONFIG_SINGLE_RSS_SOURCE_URL = "https://www.sabah.com.tr/rss/anasayfa.xml",
+
 CONFIG_EASY_DEBUG = True,
+
 CONFIG_TEST_VAR = "suatatan",
+
 CONFIG_TEST_MODE = False,
+
 CONFIG_FULL_TEXT_MODE = True,
 
-Amgong these params just two parameters are critical:
+**Amgong these params just two parameters are critical:**
 
 CONFIG_EASY_DEBUG: If True you can show all messages in the code, if false you cannot
 
