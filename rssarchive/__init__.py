@@ -75,7 +75,11 @@ class RssArchive:
         try:
             DEFAULT_RSS_LIST = textwrap.dedent("""
                         name,url
-                        Hürriyet,https://www.hurriyet.com.tr/rss/anasayfa
+                        T24,https://t24.com.tr/rss
+                        OdaTv,https://odatv4.com/rss.php
+                        Medyascope,https://medyascope.tv/feed/
+                        Evrensel,http://www.evrensel.net/rss/haber.xml
+                        Hürriyet,http://www.hurriyet.com.tr/rss/gundem
                         Sabah,https://www.sabah.com.tr/rss/anasayfa.xml
                         Star,http://www.star.com.tr/rss/rss.asp
                         Takvim,https://www.takvim.com.tr/rss/anasayfa.xml
