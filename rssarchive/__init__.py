@@ -75,6 +75,14 @@ class RssArchive:
         try:
             DEFAULT_RSS_LIST = textwrap.dedent("""
                         name,url
+                        İzmirDokuzEylül,https://www.dokuzeylul.com/rss
+                        DiyarbakırTigrisHaber,https://www.tigrishaber.com/rss/
+                        ÇorumYaylaHaber,https://www.yaylahaber.com.tr/rss/
+                        TrabzonHaber61,https://www.haber61.net/rss/
+                        Habertürk,http://www.haberturk.com/rss
+                        Teyit,https://teyit.org/feed
+                        HalkTV,https://halktv.com.tr/service/rss.php
+                        Karar,https://www.karar.com/service/rss.php
                         T24,https://t24.com.tr/rss
                         OdaTv,https://odatv4.com/rss.php
                         Medyascope,https://medyascope.tv/feed/
